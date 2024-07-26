@@ -101,6 +101,8 @@ class StatusResponse(BaseResponse):
         Dictionnaire d'erreur ou Lien menant vers le dictionnaire d'erreur.
     montant : str
         Montant de la transaction.
+    amount : str
+        Montant de la transaction.
     status : str
         Statut de la transaction.
     operator_id : str

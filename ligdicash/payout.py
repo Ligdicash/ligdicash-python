@@ -90,6 +90,6 @@ class Withdrawal:
         payload = {
             "commande": command
         }
-        response = self.provider.post("withdrawal/create", payload, feature="client_payout" if type == "client" else "merchant_payout")
+        response = self.provider.post("withdrawal/create" if type == "client" else "straight/payout", payload, feature="client_payout" if type == "client" else "merchant_payout")
         response_data = BaseResponse.from_dict(response)
         return response_data

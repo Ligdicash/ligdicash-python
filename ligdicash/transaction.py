@@ -3,7 +3,7 @@ from .responses import StatusResponse
 from typing import Literal
 
 
-def get_transaction(token: str = None, type:Literal["payin", "payout"]="payin") -> StatusResponse:
+def get_transaction(token: str = None, type:Literal["payin", "client_payout", "merchant_payout"]="payin") -> StatusResponse:
     """
     Récupère une transaction à partir d'un jeton.
 
@@ -11,6 +11,7 @@ def get_transaction(token: str = None, type:Literal["payin", "payout"]="payin") 
     ----------
     token : (str, optional)
         Le jeton de la transaction. Defaults à None.
+    type : Literal["payin", "client_payout", "merchant_payout"]
 
     Returns
     -------
@@ -29,7 +30,7 @@ def get_transaction(token: str = None, type:Literal["payin", "payout"]="payin") 
         raise InvalidTokenError()
     provider = HTTPProvider()
     response = provider.get(
-        f"redirect/checkout-invoice/confirm/?invoiceToken={token}" if type == "payin" else f"withdrawal/confirm/?withdrawalToken={token}",
+        f"redirect/checkout-invoice/confirm/?invoiceToken={token}" if type == "payin" else f"withdrawal/confirm/?withdrawalToken={token}" if type == "client_payout" else f"straight/payout/confirm/?payoutToken={token}",
         feature="status"
     )
     response_data = StatusResponse.from_dict(response)

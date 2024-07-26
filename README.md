@@ -132,7 +132,7 @@ Pour obtenir une transaction, vous devez fournir le token de la transaction.
 
 ```python
 transaction_token = "eyJ0eXAiOiJ...pZCI6IjY"
-transaction = ligdicash.get_transaction(transaction_token, "payout") # "payin" ou "payout"
+transaction = ligdicash.get_transaction(transaction_token, "client_payout") # "payin" ou "client_payout" ou "merchant_payout"
 status = transaction.status;
 if status === "completed":
     // La transaction a été effectuée avec succès
