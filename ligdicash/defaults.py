@@ -1,3 +1,5 @@
+from typing import Union
+
 CONF_BASE_URL = {
     "test": "https://test.ligdicash.com/pay/v01/",
     "live": "https://app.ligdicash.com/pay/v01/",
@@ -5,7 +7,7 @@ CONF_BASE_URL = {
 """ Définition de l'url de test et de live """
 
 
-def get_platform_url(name: str) -> str | None:
+def get_platform_url(name: str) -> Union[str, None]:
     """
     Retourne l'URL de base de la plateforme en fonction de son nom.
 

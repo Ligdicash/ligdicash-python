@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Union
 
 from .decorators import is_not_testable
 from .providers import HTTPProvider
@@ -94,7 +94,7 @@ class InvoiceItem:
         self._unit_price = new_unit_price
         self.total_price = new_unit_price * self._quantity
 
-    def to_dict(self) -> Dict[str, str | int]:
+    def to_dict(self) -> Dict[str, Union[str, int]]:
         """
         Retourne une représentation dictionnaire de l'article.
 
