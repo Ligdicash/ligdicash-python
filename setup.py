@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='ligdicash',
-    version='1.0.2',
+    version='1.0.3',
     packages=find_packages(),
     install_requires=['requests'],
     author='LigdiCash',
@@ -20,6 +20,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
-    python_requires='>=3.11.7',
+    python_requires='>=3.0',
     readme = "README.md"
 )
