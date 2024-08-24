@@ -3,7 +3,7 @@ import requests
 import ligdicash
 from .defaults import get_platform_url
 from .wiki import get_wiki_error
-from typing import Literal
+from typing import Literal, Dict
 import re
 
 
@@ -72,7 +72,7 @@ class HTTPProvider:
 
     def get_data_or_raise_error(
         self, response: requests.Response, feature: Literal["payin", "client_payout", "merchant_payout", "status"]
-    ) -> dict:
+    ) -> Dict:
         """
         Récupère les données de réponse JSON si la réponse HTTP est OK. Sinon, lève une exception.
 
@@ -85,7 +85,7 @@ class HTTPProvider:
 
         Returns
         -------
-        dict
+        Dict
             Les données de réponse JSON.
 
         Raises
@@ -109,8 +109,8 @@ class HTTPProvider:
                 raise error(error_code)
 
     def post(
-        self, url: str, payload: dict, feature: Literal["payin", "client_payout", "merchant_payout", "status"]
-    ) -> dict:
+        self, url: str, payload: Dict, feature: Literal["payin", "client_payout", "merchant_payout", "status"]
+    ) -> Dict:
         """
         Envoie une requête POST à l'API et récupère les données de la réponse.
 
@@ -118,14 +118,14 @@ class HTTPProvider:
         ----------
         url : str
             L'URL à laquelle envoyer la requête.
-        payload : dict
+        payload : Dict
             Le corps de la requête HTTP.
         feature : Literal["payin", "client_payout", "merchant_payout", "status"]
             La fonctionnalité utilisée.
 
         Return
         ------
-        dict
+        Dict
             Les données de réponse de la requête HTTP.
 
         Raises
@@ -137,7 +137,7 @@ class HTTPProvider:
         response_data = self.get_data_or_raise_error(response, feature)
         return response_data
 
-    def get(self, url: str, feature: Literal["payin", "client_payout", "merchant_payout", "status"]) -> dict:
+    def get(self, url: str, feature: Literal["payin", "client_payout", "merchant_payout", "status"]) -> Dict:
         """
         Envoie une requête GET à l'API et récupère les données de la réponse.
 
@@ -150,7 +150,7 @@ class HTTPProvider:
 
         Return
         ------
-        dict
+        Dict
             Les données de réponse de la requête HTTP.
 
         Raises

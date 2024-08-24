@@ -1,4 +1,4 @@
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 
 
 class BaseResponse:
@@ -15,7 +15,7 @@ class BaseResponse:
         Texte de réponse de la requête.
     description : str
         Description de la réponse.
-    wiki : list[str]
+    wiki : List[str]
         Liste des liens wiki liés à la réponse.
     custom_data : Dict[str, Any], optional
         Données personnalisées de la réponse, par défaut {}.
@@ -29,7 +29,7 @@ class BaseResponse:
         token: str,
         response_text: str,
         description: str,
-        wiki: list[str],
+        wiki: List[str],
         customdata: Dict[str, Any] = {},
         custom_data: Dict[str, Any] = {},
         *args,
@@ -48,7 +48,7 @@ class BaseResponse:
             Texte de réponse de la requête.
         description : str
             Description de la réponse.
-        wiki : list[str]
+        wiki : List[str]
             Dictionnaire d'erreur ou Lien menant vers le dictionnaire d'erreur.
         custom_data : Dict[str, Any], optional
             Données personnalisées de la réponse, par défaut {}.
@@ -95,9 +95,9 @@ class StatusResponse(BaseResponse):
         Texte de réponse de la transaction.
     description : str
         Description de la demande de paiement.
-    custom_data : dict[str, any], optionnel
+    custom_data : Dict[str, any], optionnel
         Données associées à la transaction.
-    wiki : list[str]
+    wiki : List[str]
         Dictionnaire d'erreur ou Lien menant vers le dictionnaire d'erreur.
     montant : str
         Montant de la transaction.
@@ -122,7 +122,7 @@ class StatusResponse(BaseResponse):
         response_text: str,
         description: str,
         custom_data: Dict[str, Any],
-        wiki: list[str],
+        wiki: List[str],
         amount: int,
         montant: int,
         status: str,
@@ -147,9 +147,9 @@ class StatusResponse(BaseResponse):
             Texte de réponse de la transaction.
         description : str
             Description de la demande de paiement.
-        custom_data : dict[str, any], optionnel
+        custom_data : Dict[str, any], optionnel
             Données associées à la transaction.
-        wiki : list[str]
+        wiki : List[str]
             Dictionnaire d'erreur ou Lien menant vers le dictionnaire d'erreur.
         montant : str
             Montant de la transaction.
@@ -185,7 +185,7 @@ class StatusResponse(BaseResponse):
 
         Parameters
         ----------
-        data : dict[str, any]
+        data : Dict[str, any]
             Dictionnaire contenant les données pour construire l'instance.
 
         Returns
